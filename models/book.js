@@ -55,6 +55,7 @@ const bookSchema = new Schema({
             'Romance',
             'Science Fiction',
             'Young Adult',
+            'Classic',
             'Nonfiction']
     },
     onTbr: [{type: Schema.Types.ObjectId, ref: 'User'}],
