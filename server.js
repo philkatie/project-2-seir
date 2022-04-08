@@ -17,8 +17,10 @@ const app = express();
 require('./config/database');
 // configure Passport
 require('./config/passport');
-
-
+// connect to routes
+const indexRouter = require('./routes/index');
+const booksRouter = require('./routes/books');
+const reviewsRouter = require('./routes/reviews');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,6 +41,9 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/', indexRouter);
+app.use('/books', booksRouter);
+app.use('/', reviewsRouter);
 
 
 // Add this middleware BELOW passport middleware
