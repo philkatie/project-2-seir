@@ -47,7 +47,15 @@ const bookSchema = new Schema({
     },
     genre: {
         type: String,
-        enum: ['list of genres']
+        enum: [
+            'Contemporary',
+            'Fantasy',
+            'Historical Fiction', 
+            'Mystery/Thriller',
+            'Romance',
+            'Science Fiction',
+            'Young Adult',
+            'Nonfiction']
     },
     onTbr: [{type: Schema.Types.ObjectId, ref: 'User'}],
     usersReadubg: [{type: Schema.Types.ObjectId, ref: 'User'}],

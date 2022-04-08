@@ -4,7 +4,8 @@ const Book = require('../models/book');
 module.exports = {
     index,
     new: newBook,
-    show
+    show,
+    create
 };
 
 // index function - renders All Books index.ejs
@@ -34,3 +35,11 @@ function newBook(req, res) {
 };
 
 // create function - lets a user add a new book to the DB
+function create (req, res) {
+    const book = new Book(req.body);
+    book.save(function(err) {
+        if (err) return res.redirect("/books/new");
+        console.log(book);
+        res.redirect(`/books/${book._id}`);
+    });
+};

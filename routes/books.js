@@ -14,6 +14,7 @@ router.get('/new', booksCtrl.new);
 router.get('/:id', booksCtrl.show);
 
 // add new book to db
+router.post('/', booksCtrl.create);
 // router.post('/', isLoggedIn, booksCtrl.create);
 
 module.exports = router;
