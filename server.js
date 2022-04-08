@@ -30,7 +30,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); // false in labs?
 app.use(cookieParser());
 // mount the session middleware
 app.use(session({
@@ -41,9 +41,11 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/', indexRouter);
+
+// Routers
 app.use('/books', booksRouter);
 app.use('/', reviewsRouter);
+app.use('/', indexRouter);
 
 
 // Add this middleware BELOW passport middleware
