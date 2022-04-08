@@ -42,7 +42,7 @@ const bookSchema = new Schema({
         type: Number,
         min: 1
     },
-    imageURL: {
+    imageUrl: {
         type: String
     },
     genre: {
