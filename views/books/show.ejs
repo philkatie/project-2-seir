@@ -26,6 +26,38 @@
     </div>
 </div>
 
+<div class="container">
+    <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
+        <label>Review:</label>
+        <textarea name="content"></textarea>
+        <label>Rating:</label>
+        <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+        <input type="submit" value="Leave Review">
+    </form>
+
+    <% if (book.reviews.length) { %> 
+        <table>
+            <thead>
+                <th>User</th>
+                <th>Date</th>
+                <th>Review</th>
+                <th>Rating</th>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+
+    <% } %> 
+
+</div>
 
 
 
