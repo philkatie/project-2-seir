@@ -18,3 +18,18 @@
 .collection-item form {
   margin-top: -5px;
 }
+
+nav{
+  background-color: #222D44;
+}
+
+.banner{
+  background-color: #F7ACAE;
+}
+.row{
+  align-items:center;
+}
+
+body {
+  background-color: #FFF4F0;
+}
