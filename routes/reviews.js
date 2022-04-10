@@ -8,7 +8,6 @@ router.post('/books/:id/reviews', reviewsCtrl.create);
 // router.post('/books/:id/reviews', isLoggedIn, reviewsCtrl.create);
 
 // lets user delete their review
-// router.post('/reviews/:id', reviewsCtrl.delete);
-
+router.delete('/reviews/:id', reviewsCtrl.delete);
 
 module.exports = router;
