@@ -1,4 +1,4 @@
-var router = require('express').Router();
+const router = require('express').Router();
 const passport = require('passport');
 
 // The root route renders our only view
@@ -20,7 +20,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/', // where do you want the client to go after you login 
+    successRedirect : '/books', // where do you want the client to go after you login 
     failureRedirect : '/' // where do you want the client to go if login fails
   }
 ));
