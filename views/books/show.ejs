@@ -27,20 +27,24 @@
 </div>
 
 <div class="container">
-    <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
-        <label>Review:</label>
-        <textarea name="content"></textarea>
-        <label>Rating:</label>
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <br>
-        <input type="submit" value="Leave Review">
-    </form>
+    <% if (user) { %> 
+        <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
+            <label>Review:</label>
+            <textarea name="content"></textarea>
+            <label>Rating:</label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <input type="submit" value="Leave Review">
+        </form>
+    <% } else { %> 
+        <h5>Log in to leave a review</h5>
+    <% } %> 
 
     <% if (book.reviews.length) { %> 
         <table>
@@ -49,12 +53,42 @@
                 <th>Date</th>
                 <th>Review</th>
                 <th>Rating</th>
+                <th></th>
             </thead>
             <tbody>
-                
+                <% let total = 0 %>
+                <% book.reviews.forEach(function(r) { %>
+                    <% total += r.rating %>
+                    <tr>
+                        <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>">
+                            <%= r.userName %>
+                        </td>
+                        <td>
+                            <%= r.createdAt.toLocaleDateString() %> 
+                        </td>
+                        <td>
+                            <%= r.content %> 
+                        </td>
+                        <td>
+                            <%= r.rating %> 
+                        </td>
+                        <td>
+                            <% if (user && user._id.equals(r.user)) { %>
+                                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                                    <button type="submit">X</button>
+                                </form>
+                            <% } %> 
+                        </td>
+                    </tr>  
+                    <% }); %> 
+                    <tr>
+                        <td colspan="3"></td>
+                        <td><strong><%= (total / book.reviews.length).toFixed(1) %> </strong></td>
+                    </tr>
             </tbody>
         </table>
-
+    <% } else { %> 
+        <h5>No Reviews Yet</h5>
     <% } %> 
 
 </div>
