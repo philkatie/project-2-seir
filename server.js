@@ -21,6 +21,7 @@ require('./config/passport');
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
 const reviewsRouter = require('./routes/reviews');
+const tbrRouter = require('./routes/tbr');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,6 +54,7 @@ app.use(function (req, res, next) {
 app.use('/books', booksRouter);
 app.use('/', reviewsRouter);
 app.use('/', indexRouter);
+app.use('/', tbrRouter);
 
 
 // invalid request, send 404 page

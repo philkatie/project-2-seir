@@ -13,6 +13,11 @@
                 <li><%= book.releaseYear %> </li>
                 <li><%= book.pageCount %> pages</li>
                 <li><%= book.genre %> </li>
+                <% if (user) { %>
+                    <form action="/books/<%= book._id %>/tbr" method="POST">
+                        <button id="tbr" type="submit">ADD TO TBR</button>
+                    </form>   
+                <% } %> 
             </ul>
         </div>
     </div>
@@ -48,7 +53,6 @@
 
 
     <% if (book.reviews.length) { %> 
-        <% book.reviews.forEach(function(r) { %>
         <div class="container-fluid px-1 py-5 mx-auto">
             <div class="row justify-content-center">
                 <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
@@ -114,6 +118,7 @@
                             </div>
                         </div>
                     </div>
+                    <% book.reviews.forEach(function(r) { %>
                     <div class="card review-card">
                         <div class="row d-flex">
                             <div class=""> <img class="profile-pic" src="<%= r.userAvatar %>"> </div>
