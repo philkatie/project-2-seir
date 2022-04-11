@@ -6,11 +6,10 @@ module.exports = {
 
 // addToTbr function - adds book to user's TBR
 function create(req, res) {
-    Book.findOne({_id: req.params.id, tbr: {$nin: req.user._id}}, function(err, book) {
-        if (!book) return res.redirect('/books');
-        book.tbr.push(req.user._id);
+    Book.findById(req.params.id, function(err, book) {
+        book.onTbr.push(req.user._id);
         book.save(function(err) {
-            res.redirect('/books');
+            res.redirect(`/books/${book._id}`);
         });
     });
 };
