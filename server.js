@@ -22,6 +22,7 @@ const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
 const reviewsRouter = require('./routes/reviews');
 const tbrRouter = require('./routes/tbr');
+const shelfRouter = require('./routes/shelf');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +56,8 @@ app.use('/books', booksRouter);
 app.use('/', reviewsRouter);
 app.use('/', indexRouter);
 app.use('/', tbrRouter);
+app.use('/', shelfRouter);
+
 
 
 // invalid request, send 404 page

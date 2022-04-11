@@ -16,7 +16,10 @@
                 <% if (user) { %>
                     <form action="/books/<%= book._id %>/tbr" method="POST">
                         <button id="tbr" type="submit">ADD TO TBR</button>
-                    </form>   
+                    </form>
+                    <form action="/books/<%= book._id %>/shelf" method="POST">
+                        <button id="shelf" type="submit">ADD TO BOOKSHELF</button>
+                    </form>      
                 <% } %> 
             </ul>
         </div>

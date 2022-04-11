@@ -59,7 +59,7 @@ const bookSchema = new Schema({
             'Nonfiction']
     },
     onTbr: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    usersReadubg: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    usersReading: [{type: Schema.Types.ObjectId, ref: 'User'}],
     reviews: [reviewSchema]
 });
 
