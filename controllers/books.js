@@ -5,8 +5,7 @@ module.exports = {
     index,
     new: newBook,
     show,
-    create,
-    mine: myShelf
+    create
 };
 
 // index function - renders All Books index.ejs
@@ -42,15 +41,5 @@ function create(req, res) {
         if (err) return res.redirect("/books/new");
         console.log(book);
         res.redirect(`/books/${book._id}`);
-    });
-};
-
-// userShelf function - accesses a user's bookshelf
-function myShelf(req, res) {
-    Book.find({}, function(err, books) {
-        res.render('books/myshelf', {
-            books,
-            title: "My Bookshelf"
-        });
     });
 };

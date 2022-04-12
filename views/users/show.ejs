@@ -1,0 +1,47 @@
+<%- include('../partials/header') %> 
+<h1>hiii User Shelf view</h1>
+
+<br>
+<div class="container">
+    <% if (user) { %> 
+        <h1>My Bookshelf</h1>
+        <div class="row">
+            <% books.forEach(function(b) { %>
+                <% if (b.usersReading.includes(user._id)) { %> 
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="<%= b.imageUrl %>" alt="<%= b.title %> Cover">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= b.title %></h5>
+                                <p class="card-text"><%= b.author %> </p>
+                                <a href="/books/<%= b._id %>">DETAILS</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+    </div>
+    <h1>My TBR</h1>
+    <div class="row">
+        <% books.forEach(function(b) { %>
+            <% if (b.onTbr.includes(user._id)) { %> 
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="<%= b.imageUrl %>" alt="<%= b.title %> Cover">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= b.title %></h5>
+                            <p class="card-text"><%= b.author %> </p>
+                            <a href="/books/<%= b._id %>">DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% }); %> 
+</div>
+    <% } else { %>
+        <h1>Log in to view your bookshelf!</h1> 
+    <% } %> 
+</div>
+
+
+<%- include('../partials/footer') %> 

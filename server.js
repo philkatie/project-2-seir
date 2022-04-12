@@ -23,6 +23,7 @@ const booksRouter = require('./routes/books');
 const reviewsRouter = require('./routes/reviews');
 const tbrRouter = require('./routes/tbr');
 const shelfRouter = require('./routes/shelf');
+const usersRouter = require('./routes/users');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,6 +54,7 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/books', booksRouter);
+app.use('/myshelf', usersRouter);
 app.use('/', reviewsRouter);
 app.use('/', indexRouter);
 app.use('/', tbrRouter);
