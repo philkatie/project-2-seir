@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-2"></div>
         <div class="col-4">
-            <img src=<%= book.imageUrl %> >
+            <img width="300px" src=<%= book.imageUrl %> >
         </div>
         <div class="col-4">
             <h3><%= book.title %> </h3>
@@ -19,23 +19,24 @@
                 <li><%= book.pageCount %> pages</li>
                 <li><%= book.releaseYear %> </li>
                 <br>
-                <% if (user) { %>
-                    <% if (!book.onTbr.includes(user._id)) { %> 
-                        <form action="/books/<%= book._id %>/tbr" method="POST">
-                            <button id="tbr" type="submit">ADD TO TBR</button>
-                        </form>
-                    <% } else { %>
-                        <p>delete from tbr button goes here</p>
-                    <% } %>  
-                    <% if (!book.usersReading.includes(user._id)) { %> 
-                        <form action="/books/<%= book._id %>/shelf" method="POST">
-                            <button id="shelf" type="submit">ADD TO BOOKSHELF</button>
-                        </form>    
-                    <% } else { %>   
-                        <p>delete from bookshelf button goes here</p>
-                    <% } %> 
-                <% } %> 
             </ul>
+            <% if (user) { %>
+                <% if (!book.onTbr.includes(user._id)) { %> 
+                    <form action="/books/<%= book._id %>/tbr" method="POST">
+                        <button id="tbr" type="submit">ADD TO TBR</button>
+                    </form>
+                <% } else { %>
+                    <p>delete from tbr button goes here</p>
+                <% } %>
+                <br>  
+                <% if (!book.usersReading.includes(user._id)) { %> 
+                    <form action="/books/<%= book._id %>/shelf" method="POST">
+                        <button id="shelf" type="submit">ADD TO BOOKSHELF</button>
+                    </form>    
+                <% } else { %>   
+                    <p>delete from bookshelf button goes here</p>
+                <% } %> 
+            <% } %> 
         </div>
         <div class="col-2"></div>
     </div>
@@ -60,12 +61,61 @@
         <br>
         <br>
     </div>
+
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card mb-3 leave-review-card">
+                <% if (user) { %> 
+                    <div class="row">
+                        <div class="col-12" id="leave-review-text">
+                            <h3>Leave a review for <%= book.title %></h3>
+                        </div>
+                    </div>
+                    <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <textarea name="content"></textarea>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Rating:</label>
+                                <br>
+                                <select name="rating">
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" id="submit-review-col">
+                                <input id="submit-review" type="submit" value="Leave Review">
+                            </div>
+                        </div>
+                    </form>
+                <% } else { %>
+                    <br>
+                    <br>
+                    <br>
+                    <h5>Log in to leave a review</h5>
+                    <br>
+                    <a class="login-link" href="/auth/google">LOG IN&nbsp;</a>
+                    <br>
+                <% } %>  
+            </div>
+        </div>
+        <div class="col-2"></div>   
+    </div>
+
     <% if (book.reviews.length) { %> 
         <% book.reviews.forEach(function(r) { %>
             <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <div class="card mb-3" style="max-width: 540px;">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <div class="card mb-3">
                         <div class="row">
                             <div class="col-md-4 review-user">
                                 <img class="profile-pic" src="<%= r.userAvatar %>">
@@ -93,7 +143,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3"></div>   
+                <div class="col-2"></div>   
             </div>
         <% }); %>
 
@@ -102,60 +152,6 @@
         <% } %> 
         
 </div>
-
-<div class="container">
-    <div class="col-md-12">
-        <div class="row justify-content-center">
-            <div class="card">
-                <h1>review box goes here</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-        <div class="col-md-12">
-            <div class="container-fluid px-1 py-5 mx-auto">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-                        <div class="card review-card">
-                            <div class="row d-flex">
-                                <% if (user) { %> 
-                                    <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
-                                        <h3>Leave a review for <%= book.title %> </h3>
-                                        <label>Review:</label>
-                                        <br>
-                                        <textarea name="content"></textarea>
-                                        <br>
-                                        <label>Rating:</label>
-                                        <br>
-                                        <select name="rating">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <br>
-                                        <input type="submit" value="Leave Review">
-                                    </form>
-                                <% } else { %> 
-                                    <h5>Log in to leave a review</h5>
-                                <% } %> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-</div>
-
-
-
-
-
-
 
 
 <%- include('../partials/footer') %> 

@@ -160,3 +160,36 @@ ul {
 .review-user {
   text-align: center;
 }
+
+.leave-review-card {
+  text-align: center;
+}
+
+textarea {
+  padding: 7px;
+  margin: 5px 20px;
+  width: 100%
+}
+
+#submit-review {
+  padding: 5px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+#leave-review-text {
+  text-align: center;
+  margin: 10px;
+}
+
+#submit-review-col {
+  text-align: center;
+  align-items: center;
+}
+
+.login-link {
+  background-color:#F7ACAE;
+  color:#222D44;
+  padding: 10px 20px;
+  text-align: center;
+}
