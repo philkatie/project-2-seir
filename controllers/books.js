@@ -6,6 +6,7 @@ module.exports = {
     new: newBook,
     show,
     create,
+    mine: myShelf
 };
 
 // index function - renders All Books index.ejs
@@ -44,3 +45,12 @@ function create(req, res) {
     });
 };
 
+// userShelf function - accesses a user's bookshelf
+function myShelf(req, res) {
+    Book.find({}, function(err, books) {
+        res.render('books/myshelf', {
+            books,
+            title: "My Bookshelf"
+        });
+    });
+};

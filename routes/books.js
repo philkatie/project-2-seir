@@ -17,4 +17,7 @@ router.get('/:id', booksCtrl.show);
 router.post('/', booksCtrl.create);
 // router.post('/', isLoggedIn, booksCtrl.create);
 
+// access user's bookshelf
+router.get('/myshelf', booksCtrl.mine);
+
 module.exports = router;
