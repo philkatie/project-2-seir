@@ -5,8 +5,6 @@ module.exports = {
     delete: deleteReview
 };
 
-// delete: deleteReview function deletes a review by the user
-
 // create function, allows a user to create a new review
 function create(req, res) {
     Book.findById(req.params.id, function(err, book) {
@@ -21,6 +19,7 @@ function create(req, res) {
     });
 };
 
+// delete: deleteReview function deletes a review by the user
 function deleteReview(req, res) {
     Book.findOne({'reviews._id': req.params.id}, function(err, bookDoc) {
         const review = bookDoc.reviews.id(req.params.id);
