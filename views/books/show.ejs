@@ -14,12 +14,20 @@
                 <li><%= book.pageCount %> pages</li>
                 <li><%= book.genre %> </li>
                 <% if (user) { %>
-                    <form action="/books/<%= book._id %>/tbr" method="POST">
-                        <button id="tbr" type="submit">ADD TO TBR</button>
-                    </form>
-                    <form action="/books/<%= book._id %>/shelf" method="POST">
-                        <button id="shelf" type="submit">ADD TO BOOKSHELF</button>
-                    </form>      
+                    <% if (!book.onTbr.includes(user._id)) { %> 
+                        <form action="/books/<%= book._id %>/tbr" method="POST">
+                            <button id="tbr" type="submit">ADD TO TBR</button>
+                        </form>
+                    <% } else { %>
+                        <p>delete from tbr button goes here</p>
+                    <% } %>  
+                    <% if (!book.usersReading.includes(user._id)) { %> 
+                        <form action="/books/<%= book._id %>/shelf" method="POST">
+                            <button id="shelf" type="submit">ADD TO BOOKSHELF</button>
+                        </form>    
+                    <% } else { %>   
+                        <p>delete from bookshelf button goes here</p>
+                    <% } %> 
                 <% } %> 
             </ul>
         </div>
@@ -35,93 +43,55 @@
 </div>
 
 <div class="container">
-    <% if (user) { %> 
-        <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
-            <label>Review:</label>
-            <textarea name="content"></textarea>
-            <label>Rating:</label>
-            <select name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <br>
-            <input type="submit" value="Leave Review">
-        </form>
-    <% } else { %> 
-        <h5>Log in to leave a review</h5>
-    <% } %> 
+    <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="card">
+                <h1>review box goes here</h1>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-    <% if (book.reviews.length) { %> 
-        <div class="container-fluid px-1 py-5 mx-auto">
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-                    <div class="card">
-                        <div class="row justify-content-left d-flex">
-                            <div class="col-md-4 d-flex flex-column">
-                                <div class="rating-box">
-                                    <h1 class="pt-4">4.0</h1>
-                                    <p class="">out of 5</p>
-                                </div>
-                                <div> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-inactive mx-1"></span> </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="rating-bar0 justify-content-center">
-                                    <table class="text-left mx-auto">
-                                        <tr>
-                                            <td class="rating-label">Excellent</td>
-                                            <td class="rating-bar">
-                                                <div class="bar-container">
-                                                    <div class="bar-5"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right">123</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="rating-label">Good</td>
-                                            <td class="rating-bar">
-                                                <div class="bar-container">
-                                                    <div class="bar-4"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right">23</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="rating-label">Average</td>
-                                            <td class="rating-bar">
-                                                <div class="bar-container">
-                                                    <div class="bar-3"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right">10</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="rating-label">Poor</td>
-                                            <td class="rating-bar">
-                                                <div class="bar-container">
-                                                    <div class="bar-2"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right">3</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="rating-label">Terrible</td>
-                                            <td class="rating-bar">
-                                                <div class="bar-container">
-                                                    <div class="bar-1"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right">0</td>
-                                        </tr>
-                                    </table>
-                                </div>
+<div class="container">
+        <div class="col-md-12">
+            <div class="container-fluid px-1 py-5 mx-auto">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+                        <div class="card review-card">
+                            <div class="row d-flex">
+                                <% if (user) { %> 
+                                    <form id="add-review" method="POST" action="/books/<%= book._id %>/reviews">
+                                        <h3>Leave a review for <%= book.title %> </h3>
+                                        <label>Review:</label>
+                                        <br>
+                                        <textarea name="content"></textarea>
+                                        <br>
+                                        <label>Rating:</label>
+                                        <br>
+                                        <select name="rating">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <br>
+                                        <input type="submit" value="Leave Review">
+                                    </form>
+                                <% } else { %> 
+                                    <h5>Log in to leave a review</h5>
+                                <% } %> 
                             </div>
                         </div>
                     </div>
-                    <% book.reviews.forEach(function(r) { %>
+                </div>
+            </div>
+        </div>
+
+    <% if (book.reviews.length) { %> 
+            <% book.reviews.forEach(function(r) { %>
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
                     <div class="card review-card">
                         <div class="row d-flex">
                             <div class=""> <img class="profile-pic" src="<%= r.userAvatar %>"> </div>
@@ -137,6 +107,11 @@
                         </div>
                         <div class="row text-left">
                             <p class="content"><%= r.content %></p>
+                            <% if (user && user._id.equals(r.user)) { %>
+                                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                                    <button type="submit">X</button>
+                                </form>
+                            <% } %> 
                         </div>
                         </div>
                     </div>
