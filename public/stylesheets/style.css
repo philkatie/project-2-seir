@@ -193,3 +193,7 @@ textarea {
   padding: 10px 20px;
   text-align: center;
 }
+
+.card-body {
+  height: 150px;
+}
