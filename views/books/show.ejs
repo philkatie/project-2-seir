@@ -2,17 +2,23 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <br>
+        <br>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-2"></div>
+        <div class="col-4">
             <img src=<%= book.imageUrl %> >
         </div>
-        <div class="col-md-6">
+        <div class="col-4">
             <h3><%= book.title %> </h3>
-            <h4><%= book.author %> </h4>
+            <h5><%= book.author %> </h5>
             <p><%= book.description %> </p>
             <ul>
-                <li><%= book.releaseYear %> </li>
-                <li><%= book.pageCount %> pages</li>
                 <li><%= book.genre %> </li>
+                <li><%= book.pageCount %> pages</li>
+                <li><%= book.releaseYear %> </li>
+                <br>
                 <% if (user) { %>
                     <% if (!book.onTbr.includes(user._id)) { %> 
                         <form action="/books/<%= book._id %>/tbr" method="POST">
@@ -31,15 +37,70 @@
                 <% } %> 
             </ul>
         </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
+        <br>
+        <br>
     </div>
 </div>
 
 <div class="banner">
     <div class="container">
         <div class="row">
-            <h1>Reviews for <%= book.title %> </h1>
+            <div class="col-12">
+                <h1 id="review-banner">Reviews for <%= book.title %> </h1>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <br>
+        <br>
+    </div>
+    <% if (book.reviews.length) { %> 
+        <% book.reviews.forEach(function(r) { %>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row">
+                            <div class="col-md-4 review-user">
+                                <img class="profile-pic" src="<%= r.userAvatar %>">
+                                <br>
+                                <p class="mt-2 mb-0"><%= r.userName %></h3>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= r.rating %>.0</h5>
+                                    <p class="card-text"><%= r.content %></p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <%= r.createdAt.toLocaleDateString() %>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <% if (user && user._id.equals(r.user)) { %>
+                                    <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                                        <button type="submit">X</button>
+                                    </form>
+                                <% } %> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3"></div>   
+            </div>
+        <% }); %>
+
+        <% } else { %> 
+            <h5>No Reviews Yet</h5>
+        <% } %> 
+        
 </div>
 
 <div class="container">
@@ -87,89 +148,6 @@
                 </div>
             </div>
         </div>
-
-    <% if (book.reviews.length) { %> 
-            <% book.reviews.forEach(function(r) { %>
-            <div class="row justify-content-center">
-                <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
-                    <div class="card review-card">
-                        <div class="row d-flex">
-                            <div class=""> <img class="profile-pic" src="<%= r.userAvatar %>"> </div>
-                            <div class="d-flex flex-column">
-                                <h3 class="mt-2 mb-0"><%= r.userName %></h3>
-                                <div>
-                                    <p class="text-left"><span class="text-muted"><%= r.rating %> </span> <span class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span class="fa fa-star star-inactive"></span></p>
-                                </div>
-                            </div>
-                            <div class="ml-auto">
-                                <p class="text-muted pt-5 pt-sm-3"><%= r.createdAt.toLocaleDateString() %></p>
-                            </div>
-                        </div>
-                        <div class="row text-left">
-                            <p class="content"><%= r.content %></p>
-                            <% if (user && user._id.equals(r.user)) { %>
-                                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                                    <button type="submit">X</button>
-                                </form>
-                            <% } %> 
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% }); %>
-
-
-    <% } else { %> 
-        <h5>No Reviews Yet</h5>
-    <% } %> 
-
-
-    <% if (book.reviews.length) { %> 
-        <table>
-            <thead>
-                <th>User</th>
-                <th>Date</th>
-                <th>Review</th>
-                <th>Rating</th>
-                <th></th>
-            </thead>
-            <tbody>
-                <% let total = 0 %>
-                <% book.reviews.forEach(function(r) { %>
-                    <% total += r.rating %>
-                    <tr>
-                        <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>">
-                            <%= r.userName %>
-                        </td>
-                        <td>
-                            <%= r.createdAt.toLocaleDateString() %> 
-                        </td>
-                        <td>
-                            <%= r.content %> 
-                        </td>
-                        <td>
-                            <%= r.rating %> 
-                        </td>
-                        <td>
-                            <% if (user && user._id.equals(r.user)) { %>
-                                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                                    <button type="submit">X</button>
-                                </form>
-                            <% } %> 
-                        </td>
-                    </tr>  
-                    <% }); %> 
-                    <tr>
-                        <td colspan="3"></td>
-                        <td><strong><%= (total / book.reviews.length).toFixed(1) %> </strong></td>
-                    </tr>
-            </tbody>
-        </table>
-    <% } else { %> 
-        <h5>No Reviews Yet</h5>
-    <% } %> 
 
 </div>
 
