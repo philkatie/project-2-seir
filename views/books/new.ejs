@@ -15,40 +15,61 @@
 <br>
 
 <div class="container">
-    <form action="/books" method="POST">
-        <label>Title:</label>
-        <input type="text" name="title">
-        <br>
-        <label>Author:</label>
-        <input type="text" name="author">
-        <br>
-        <label>Description:</label>
-        <input type="text" name="description">
-        <br>
-        <label>Release Year:</label>
-        <input type="text" name="releaseYear">
-        <br>
-        <label>Page Count</label>
-        <input type="text" name="pageCount">
-        <br>
-        <label>Cover Image URL:</label>
-        <input type="text" name="imageUrl">
-        <br>
-        <label>Genre:</label>
-        <select name="genre">
-            <option value="Contemporary">Contemporary</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Historical Fiction">Historical Fiction</option>
-            <option value="Mystery/Thriller">Mystery/Thriller</option>
-            <option value="Romance">Romance</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Young Adult">Young Adult</option>
-            <option value="Classic">Classic</option>
-            <option value="Nonfiction">Nonfiction</option>
-        </select>
-        <br>
-        <input type="submit" value="Add Book to Bookshelf">
-    </form>
+    <br>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Title:</label>
+                    <input type="text" class="form-control col-sm-5" name="title">
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Author:</label>
+                    <input type="text" class="form-control col-sm-5" name="author">
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Release Year:</label>
+                    <input type="text" class="form-control col-sm-3" name="releaseYear">
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Page Count:</label>
+                    <input type="text" class="form-control col-sm-3" name="pageCount">
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Genre:</label>
+                    <select class="form-select col-sm-3" name="genre">
+                        <option value="Contemporary">Contemporary</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Historical Fiction">Historical Fiction</option>
+                        <option value="Mystery/Thriller">Mystery/Thriller</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Young Adult">Young Adult</option>
+                        <option value="Classic">Classic</option>
+                        <option value="Nonfiction">Nonfiction</option>
+                    </select>
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Cover Image URL:</label>
+                    <input type="text" class="form-control col-sm-5" name="imageUrl">
+                </div>
+                <div class="mb-3 row">
+                    <label class="form-label col-sm-3">Description:</label>
+                    <textarea class="form-control col-sm-5" name="description" id="form-text" rows="3"></textarea>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <button type="submit">Add Book to Bookshelf</button>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
 </div>
+
 
 <%- include('../partials/footer') %> 
