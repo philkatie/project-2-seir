@@ -154,12 +154,6 @@ textarea {
   width: 100%
 }
 
-#submit-review {
-  padding: 5px;
-  margin: 10px 0;
-  text-align: center;
-}
-
 #leave-review-text {
   text-align: center;
   margin: 10px;
@@ -249,4 +243,24 @@ button:hover {
   background: #3c4f78;
   color: white;
   text-decoration: none;
+}
+
+#delete-review {
+  width: 50px
+}
+
+#remove-book {
+  height: 75px;
+}
+
+#submit-review {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background: #222D44;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  margin: 5px 0 15px 0;
 }

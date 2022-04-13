@@ -37,7 +37,7 @@
                     </form>    
                 <% } else { %>   
                     <form action="/books/<%= book._id %>/shelf/<%= user._id %>?_method=DELETE" method="POST">
-                        <button>REMOVE FROM BOOKSHELF</button>
+                        <button id="remove-book">REMOVE FROM BOOKSHELF</button>
                     </form>
                 <% } %> 
             <% } %> 
@@ -139,7 +139,7 @@
                             <div class="col-md-2">
                                 <% if (user && user._id.equals(r.user)) { %>
                                     <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                                        <button type="submit">X</button>
+                                        <button type="submit" id="delete-review">X</button>
                                     </form>
                                 <% } %> 
                             </div>
