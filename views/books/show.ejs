@@ -26,7 +26,9 @@
                         <button id="tbr" type="submit">ADD TO TBR</button>
                     </form>
                 <% } else { %>
-                    <p>delete from tbr button goes here</p>
+                    <form action="/books/<%= book._id %>/tbr/<%= user._id %>?_method=DELETE" method="POST">
+                        <button>REMOVE FROM TBR</button>
+                    </form>
                 <% } %>
                 <br>  
                 <% if (!book.usersReading.includes(user._id)) { %> 
