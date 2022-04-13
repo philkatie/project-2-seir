@@ -36,7 +36,9 @@
                         <button id="shelf" type="submit">ADD TO BOOKSHELF</button>
                     </form>    
                 <% } else { %>   
-                    <p>delete from bookshelf button goes here</p>
+                    <form action="/books/<%= book._id %>/shelf/<%= user._id %>?_method=DELETE" method="POST">
+                        <button>REMOVE FROM BOOKSHELF</button>
+                    </form>
                 <% } %> 
             <% } %> 
         </div>
