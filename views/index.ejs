@@ -10,8 +10,11 @@
             <p class="lead">Explore books talked about on the Prose Tinted Glasses podcast, add books to the database, and curate your own bookshelf to keep track of books you've read and books you're going to read!</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 <a class="home-page-all" href="/books">View All Books</a>
-                <a class="home-page-login" href="/auth/google">Log In&nbsp;</a>
-                <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Log In</button> -->
+                <% if (user) { %>
+                    <a class="home-page-login" href="/myshelf">My Books</a>
+                <% } else { %> 
+                    <a class="home-page-login" href="/auth/google">Log In&nbsp;</a>
+                <% } %> 
             </div>
         </div>
     </div>

@@ -19,9 +19,17 @@
                 <div class="card">
                     <img class="card-img-top" src="<%= b.imageUrl %>" alt="<%= b.title %> Cover">
                     <div class="card-body index-card">
-                        <h5 class="card-title"><%= b.title %></h5>
-                        <p class="card-text"><%= b.author %> </p>
-                        <a href="/books/<%= b._id %>">DETAILS</a>
+                        <div class="row">
+                            <h5 class="card-title"><%= b.title %></h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <p class="card-text"><%= b.author %> </p>
+                            </div>
+                            <div class="col-4">
+                                <a class="details" href="/books/<%= b._id %>">DETAILS</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
