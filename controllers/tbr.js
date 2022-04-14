@@ -16,13 +16,6 @@ function create(req, res) {
     });
 };
 
-// remove from Tbr
-// function deleteTbr(req, res) {
-//     Book.findById(req.params.id, function(err, book) {
-//         console.log(book);
-//         });
-// };
-
 function deleteTbr(req, res) {
     Book.findById(req.params.id, function(err, book) {
         console.log(book);
