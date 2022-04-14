@@ -18,11 +18,7 @@ function create(req, res) {
 
 function deleteTbr(req, res) {
     Book.findById(req.params.id, function(err, book) {
-        console.log(book);
-        console.log(`${req.user._id} <-- user id`);
-        console.log(book.onTbr);
         let i = book.onTbr.indexOf(req.user._id);
-        console.log(i);
         book.onTbr.splice(i, 1);
         book.save(function(err, b) {
             if(err) {

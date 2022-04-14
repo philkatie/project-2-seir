@@ -17,11 +17,7 @@ function create(req, res) {
 
 function deleteShelf(req, res) {
     Book.findById(req.params.id, function(err, book) {
-        console.log(book);
-        console.log(`${req.user._id} <-- user id`);
-        console.log(book.usersReading);
         let i = book.usersReading.indexOf(req.user._id);
-        console.log(i);
         book.usersReading.splice(i, 1);
         book.save(function(err, b) {
             if(err) {
