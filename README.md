@@ -26,18 +26,31 @@ This is an interactive bookshelf app that allows users to view details about boo
 <img src="https://trello.com/1/cards/624f63e026266f7d6b2c8f6a/attachments/624f63e026266f7d6b2c8f7f/previews/624f63e126266f7d6b2c8f8d/download/Screen_Shot_2022-04-07_at_5.21.02_PM.png" width="600">
 
 #### Technologies Used
+
 HTML
+
 CSS
+
 JavaScript
+
 Node.js
+
 Express
+
 MongoDB
+
 Mongoose
+
 OAuth
+
 Heroku Deployment
+
 Trello
+
 Bootstrap
+
 LucidChart
+
 Figma
 
 ### Next Steps
