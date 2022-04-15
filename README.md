@@ -1,9 +1,10 @@
-# SEIR Project 2
+# Prose Tinted Glasses Bookshelf
 
-My Project 2 is a Bookshelf app where users can view details about books and add them to their personal bookshelves as either books they have read or books they would like to their TBRs. Users can also add books to the database and leave reviews.
+This is an interactive bookshelf app that allows users to view details about books and add them to their personal bookshelves as either books they have read or books they would like to add to their To-Be-Read list (TBR). Users can also add books to the database and leave reviews.
 
 ## Getting Started 
 
+[Deployed Heroku Project Link](https://prose-tinted-glasses-bookshelf.herokuapp.com/books)
 [Trello Project Planning Board](https://trello.com/b/wgyZoIcn/seir-project-2)
 
 #### Wireframe
@@ -38,4 +39,18 @@ Bootstrap
 LucidChart
 Figma
 
-### Icebox
+### Next Steps
+
+AAU, I'd like to see a summary of the review scores for a book on the details page
+AAU, I want to be able to see all the books written by a particular author
+AAU, I want to be able to see all the books in a particular genre
+AAU, I want to see if a book is part of a series, and be able to view that series
+AAU, I want to be able to browse all podcast episodes in addition to all books
+AAU, I want to be able to see what books are associated with any given podcast episode
+
+Look into consuming an API that has a book library I can draw on instead of adding all books manually
+
+Implement additonal Model for Episodes; allow users to review and favorite episodes; associate episodes with the books they feature
+
+![Icebox ERD](https://user-images.githubusercontent.com/32117930/163592856-1ef9e6db-df24-4dda-b2ae-5fbf89a27866.png)
+
