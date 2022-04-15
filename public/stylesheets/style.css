@@ -88,6 +88,11 @@ textarea {
   align-items: center;
 }
 
+#leave-review-col {
+  text-align: center;
+  align-items: center;
+}
+
 .login-link {
   background-color:#F7ACAE;
   color:#222D44;
@@ -187,6 +192,30 @@ button:hover {
   border-radius: 5px;
   color: white;
   margin: 5px 0 15px 0;
+}
+
+#submit-review:hover {
+  background: #3c4f78;
+  color: white;
+  text-decoration: none;
+}
+
+.leave-review {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background: #222D44;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  margin: 5px 0 15px 0;
+}
+
+.leave-review:hover {
+  background: #3c4f78;
+  color: white;
+  text-decoration: none;
 }
 
 .details {

@@ -16,6 +16,7 @@ function create(req, res) {
     });
 };
 
+// removes book from user's tbr
 function deleteTbr(req, res) {
     Book.findById(req.params.id, function(err, book) {
         let i = book.onTbr.indexOf(req.user._id);

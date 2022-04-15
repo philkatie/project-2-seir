@@ -7,14 +7,12 @@ const isLoggedIn = require('../config/auth');
 router.get('/', booksCtrl.index);
 
 // load books/new.ejs
-// router.get('/new', booksCtrl.new);
 router.get('/new', isLoggedIn, booksCtrl.new);
 
 // load books/show.ejs
 router.get('/:id', booksCtrl.show);
 
 // add new book to db
-// router.post('/', booksCtrl.create);
 router.post('/', isLoggedIn, booksCtrl.create);
 
 

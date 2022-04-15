@@ -5,7 +5,7 @@ module.exports = {
     delete: deleteShelf
 }
 
-// addToTbr function - adds book to user's TBR
+// add to bookshelf function - adds book to user's shelf
 function create(req, res) {
     Book.findById(req.params.id, function(err, book) {
         book.usersReading.push(req.user._id);
@@ -15,6 +15,7 @@ function create(req, res) {
     });
 };
 
+// remove from user's bookshelf
 function deleteShelf(req, res) {
     Book.findById(req.params.id, function(err, book) {
         let i = book.usersReading.indexOf(req.user._id);
