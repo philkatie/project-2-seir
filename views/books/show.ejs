@@ -133,7 +133,7 @@
                                 <br>
                                 <p class="mt-2 mb-0"><%= r.userName %></h3>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <div class="card-body">
                                     <h5 class="card-title"><%= r.rating %>.0</h5>
                                     <p class="card-text"><%= r.content %></p>
@@ -144,10 +144,17 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <% if (user && user._id.equals(r.user)) { %>
                                     <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                                         <button type="submit" id="delete-review">X</button>
+                                    </form>
+                                <% } %> 
+                            </div>
+                            <div class="col-md-2">
+                                <% if (user && user._id.equals(r.user)) { %>
+                                    <form action="/reviews/<%= r._id %>/edit" method="GET">
+                                        <button type="submit" id="edit-review">Edit</button>
                                     </form>
                                 <% } %> 
                             </div>

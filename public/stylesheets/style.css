@@ -178,6 +178,10 @@ button:hover {
   width: 50px
 }
 
+#edit-review {
+  width: 70px
+}
+
 #remove-book {
   height: 75px;
 }

@@ -2,7 +2,9 @@ const Book = require('../models/book');
 
 module.exports = {
     create,
-    delete: deleteReview
+    delete: deleteReview,
+    edit,
+    update
 };
 
 // create function, allows a user to create a new review
@@ -31,3 +33,33 @@ function deleteReview(req, res) {
         });
     });
 };
+
+// show edit page function
+function edit(req, res) {
+    Book.findOne({'reviews._id': req.params.id}, function(err, bookDoc) {
+        const review = bookDoc.reviews.id(req.params.id);
+        if (!review.user.equals(req.user.id)) return res.redirect(`/books/${bookDoc._id}`);
+        console.log(`${req.params} <--- params`)
+        console.log(`${req.params.content} <--- content`)
+        console.log(`${req.params.id} <--- id`)
+        res.render('books/edit', {
+            bookDoc,
+            review,
+            title: "Edit Review"
+        });
+    });
+}
+
+// update function, allows a user to update their review
+function update(req, res) {
+    Book.findOne({'reviews._id': req.params.id}, function(err, bookDoc) {
+        const review = bookDoc.reviews.id(req.params.id);
+        console.log(req.body.content);
+        review.content = req.body.content;
+        if (!review.user.equals(req.user.id)) return res.redirect(`/books/${bookDoc._id}`);
+        Book.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        bookDoc.save(function(err) {
+            res.redirect(`/books/${bookDoc._id}`)
+        });
+    });
+}
