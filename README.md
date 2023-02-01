@@ -4,7 +4,7 @@ This is an interactive bookshelf app that allows users to view details about boo
 
 ## Getting Started 
 
-[Deployed Heroku Project Link](https://prose-tinted-glasses-bookshelf.herokuapp.com/)
+Deployed Project Link - this project's live preview was on Heroku and has not yet been migrated to a different platform. Screenshots of the projects are below until I get a chance to redeploy!
 
 [Trello Project Planning Board](https://trello.com/b/wgyZoIcn/seir-project-2)
 
